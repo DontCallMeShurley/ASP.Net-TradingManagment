@@ -12,10 +12,13 @@ namespace TradingManagmentSystem.Controllers
     public class HomeController : Controller
     {
         public ItemsContext _items;
+
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
+
         [HttpGet]
         public ActionResult Admin(string Id)
         {
@@ -32,7 +35,7 @@ namespace TradingManagmentSystem.Controllers
         public ActionResult Admin(CoinsWrapper coinsWrapper)
         {
             var a = coinsWrapper;
-            return View();
+            return View("Index");
         }
     }
 }
