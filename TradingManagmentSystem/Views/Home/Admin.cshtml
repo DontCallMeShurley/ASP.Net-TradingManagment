@@ -1,0 +1,56 @@
+﻿@using TradingManagmentSystem.Models;
+@model TradingManagmentSystem.Models.CoinsWrapper
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+
+    <div class="row col-md-4">
+        <h4>
+            Your coins <input type="text" size="9" id="Coins" value="0">
+        </h4>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row col-md-4">
+        <h4>
+            Avaliable Coins:
+            1 @Html.EditorFor(modelItem => Model.Avaliable1)
+            2 @Html.EditorFor(modelItem => Model.Avaliable2)
+            5 @Html.EditorFor(modelItem => Model.Avaliable5)
+            10 @Html.EditorFor(modelItem => Model.Avaliable10)
+        </h4>
+    </div>
+</div>
+<h4>
+    <input type="submit" value="Сохранить">
+
+</h4>
+
+
+@section scripts {
+            <script>
+                $("#button1").click(function () {
+                    $("#Coins").val(parseInt($("#Coins").val()) + 1);
+                }
+                );
+                $("#button2").click(function () {
+                    $("#Coins").val(parseInt($("#Coins").val()) + 2);
+                }
+                );
+                $("#button5").click(function () {
+                    $("#Coins").val(parseInt($("#Coins").val()) + 5);
+                }
+                );
+                $("#button10").click(function () {
+                    $("#Coins").val(parseInt($("#Coins").val()) + 10);
+                }
+                );
+                $("#buttonReturn").click(function () {
+                    $("#Coins").val(0);
+                }
+                );
+            </script>
+        }

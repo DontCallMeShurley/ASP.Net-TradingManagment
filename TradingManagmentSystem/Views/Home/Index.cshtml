@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+
+    <div class="row col-md-4">
+        <h4>
+        Your coins <input type="text" size="9" id="Coins" value="0">
+        <button id="buttonReturn">&nbsp;return coins</button>
+        </h4>
+    </div>
+</div>
+<div class="container">
+
+    <div class="row col-md-4">
+        <h4>
+            Add Coins
+            <button id="button1">&nbsp;1</button>
+            <button id="button2">&nbsp;2</button>
+            <button id="button5">&nbsp;5</button>
+        <button id="button10">&nbsp;10</button>
+        </h4>
+    </div>
+   
+</div>
+
+
+@section scripts {
+    <script>
+        $("#button1").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 1);
+        }
+        );
+        $("#button2").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 2);
+        }
+        );
+        $("#button5").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 5);
+        }
+        );
+        $("#button10").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 10);
+        }
+        );
+        $("#buttonReturn").click(function () {
+            $("#Coins").val(0);
+        }
+        );
+    </script>
+}
