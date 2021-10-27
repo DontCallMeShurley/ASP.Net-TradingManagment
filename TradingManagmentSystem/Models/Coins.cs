@@ -17,9 +17,8 @@ namespace TradingManagmentSystem.Models
         }
         public Coins()
         {
-           
         }
-         public int Id { get; set; }
+        public int Id { get; set; }
         public int Denominations { get; set; }
         public int Count { get; set; }
         public bool Avaliable { get; set; }

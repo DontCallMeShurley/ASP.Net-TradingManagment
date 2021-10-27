@@ -2,28 +2,33 @@
 @model CoinsWrapper
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Admin Page";
 }
-<div class="container">
+<form method="post" action="">
+    <div class="container">
 
-    <div class="row col-md-4">
-        <h4>
-            Your coins <input type="text" size="9" id="Coins" value="0">
-        </h4>
+        <div class="row col-md-4">
+            <h4>
+                @Html.LabelFor(modelItem => Model.Count1): @Html.EditorFor(modelItem => Model.Count1)
+                @Html.LabelFor(modelItem => Model.Count2): @Html.EditorFor(modelItem => Model.Count2)
+                @Html.LabelFor(modelItem => Model.Count5): @Html.EditorFor(modelItem => Model.Count5)
+                @Html.LabelFor(modelItem => Model.Count10): @Html.EditorFor(modelItem => Model.Count10)
+            </h4>
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <div class="row col-md-4">
-        <h4>
-            Avaliable Coins:
-            1 @Html.EditorFor(modelItem => Model.Avaliable1)
-            2 @Html.EditorFor(modelItem => Model.Avaliable2)
-            5 @Html.EditorFor(modelItem => Model.Avaliable5)
-            10 @Html.EditorFor(modelItem => Model.Avaliable10)
-        </h4>
+    <div class="container">
+        <div class="row col-md-4">
+            <h4>
+                Avaliable Coins:
+                1 @Html.EditorFor(modelItem => Model.Avaliable1)
+                2 @Html.EditorFor(modelItem => Model.Avaliable2)
+                5 @Html.EditorFor(modelItem => Model.Avaliable5)
+                10 @Html.EditorFor(modelItem => Model.Avaliable10)
+            </h4>
+        </div>
     </div>
-</div>
-<h4>
-    <input type="submit" value="Отправить" />
-</h4>
+    <h4>
+        <input type="submit" value="Сохранить" />
+    </h4>
+</form>

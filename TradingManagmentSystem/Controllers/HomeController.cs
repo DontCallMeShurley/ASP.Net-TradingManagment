@@ -12,32 +12,53 @@ namespace TradingManagmentSystem.Controllers
     public class HomeController : Controller
     {
         public ItemsContext _db = new ItemsContext();
-
+        public CoinsWrapper _coinsWrapper = new CoinsWrapper();
         [HttpGet]
         public ActionResult Index()
         {
-            _db.Coins.Add(new Coins(1, 2, 4, true));
             _db.SaveChanges();
-            return View();
+            return View(_coinsWrapper);
         }
-
+        [HttpPost]
+        public ActionResult Index(CoinsWrapper coinsWrapper)
+        {
+            _coinsWrapper = coinsWrapper;
+            _coinsWrapper.AddCoin();
+            _db.SaveChanges();
+            return View(_coinsWrapper);
+        }
         [HttpGet]
         public ActionResult Admin(string Id)
         {
-            var coinsWrapper = new CoinsWrapper();
+            CoinsUpdate();
             if (Id != "9554390C-3C51-4DF6-AF21-618798258F98")
             {
-                return View("Index");
+                return HttpNotFound();
             }
             else
-                return View(coinsWrapper);
+                return View(_coinsWrapper);
         }
 
         [HttpPost]
         public ActionResult Admin(CoinsWrapper coinsWrapper)
         {
-            var a = coinsWrapper;
-            return View("Index");
+            _coinsWrapper = coinsWrapper;
+            coinsWrapper.CoinsToDb();
+            return View();
+        }
+        private void CoinsUpdate()
+        {
+            if (_db.Coins.Count() < 4)
+            {
+                foreach (var entity in _db.Coins)
+                    _db.Coins.Remove(entity);
+
+                _db.Coins.Add(new Coins(1, 1, 0, true));
+                _db.Coins.Add(new Coins(2, 2, 0, true));
+                _db.Coins.Add(new Coins(3, 5, 0, true));
+                _db.Coins.Add(new Coins(4, 10, 0, true));
+                _db.SaveChanges();
+            }
         }
     }
 }
