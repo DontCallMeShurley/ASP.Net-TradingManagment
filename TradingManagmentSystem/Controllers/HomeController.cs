@@ -11,11 +11,13 @@ namespace TradingManagmentSystem.Controllers
 {
     public class HomeController : Controller
     {
-        public ItemsContext _items;
+        public ItemsContext _db = new ItemsContext();
 
         [HttpGet]
         public ActionResult Index()
         {
+            _db.Coins.Add(new Coins(1, 2, 4, true));
+            _db.SaveChanges();
             return View();
         }
 
