@@ -32,39 +32,44 @@
         </div>
 
     </div>
-</form>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Purchase)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Count)
-        </th>
-        <th></th>
-    </tr>
-    @foreach (var item in Model.ItemsEnumerable.Where(a => a.Count > 0))
-    {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Purchase)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Count)
-    </td>
-    <td>
-         <img src=@("/Images/Photo" + item.Id + ".png") alt="Photo" width="150" height="150"/>
-    </td>
-</tr>
-    }
 
-</table>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Purchase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Count)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.ItemsEnumerable.Where(a => a.Count > 0))
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Purchase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>
+        <td>
+            <img src=@("/Images/Photo" + item.Id + ".png") alt="Photo" width="150" height="150" />
+        </td>
+        <td>
+            <button type="submit" id="itemsId" name ="itemsId" value=@item.Id>Buy</button>
+        </td>
+      
+    </tr>
+        }
+
+    </table>
+</form>
 @section scripts {
     <script>
         $("#button1").click(function () {

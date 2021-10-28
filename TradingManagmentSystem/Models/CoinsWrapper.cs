@@ -42,12 +42,30 @@ namespace TradingManagmentSystem.Models
             _db.Coins.FirstOrDefault(x => x.Denominations == 2).Count += this.Count2;
             _db.Coins.FirstOrDefault(x => x.Denominations == 5).Count += this.Count5;
             _db.Coins.FirstOrDefault(x => x.Denominations == 10).Count += this.Count10;
+            sumCoin();
             _db.SaveChanges();
+        }
+
+        public void RemoveCoin()
+        {
+            _db.Coins.FirstOrDefault(x => x.Denominations == 1).Count -= this.Count1;
+            _db.Coins.FirstOrDefault(x => x.Denominations == 2).Count -= this.Count2;
+            _db.Coins.FirstOrDefault(x => x.Denominations == 5).Count -= this.Count5;
+            _db.Coins.FirstOrDefault(x => x.Denominations == 10).Count -= this.Count10;
+            sumCoin();
+            _db.SaveChanges();
+        }
+
+        public void sumCoin()
+        {
+            this.Money = Count1 + Count2 * 2 + Count5 * 5 +
+                         Count10 * 10;
         }
         public bool Avaliable1 { get; set; }
         public bool Avaliable2 { get; set; }
         public bool Avaliable5 { get; set; }
         public bool Avaliable10 { get; set; }
+        public int itemsId{ get; set; }
 
         [DisplayName("Count denomination 1")]
         public int Count1 { get; set; }
@@ -60,6 +78,7 @@ namespace TradingManagmentSystem.Models
 
         [DisplayName("Count denomination 10")]
         public int Count10 { get; set; }
+        public  int Money { get; set; }
         public  IEnumerable<Items> ItemsEnumerable { get; set; }
     }
 }

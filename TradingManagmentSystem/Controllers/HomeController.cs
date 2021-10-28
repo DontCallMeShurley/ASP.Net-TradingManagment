@@ -23,12 +23,21 @@ namespace TradingManagmentSystem.Controllers
             return View(_coinsWrapper);
         }
         [HttpPost]
-        public ActionResult Index(CoinsWrapper coinsWrapper)
+        public string Index(CoinsWrapper coinsWrapper)
         {
             _coinsWrapper = coinsWrapper;
             _coinsWrapper.AddCoin();
+            Items buyItems = _db.Items.FirstOrDefault(x => x.Id == coinsWrapper.itemsId);
+            if (buyItems.Purchase > coinsWrapper.Money)
+            {
+                _coinsWrapper.RemoveCoin();
+                _coinsWrapper = new CoinsWrapper();
+                return "You don't have enough money. Coins will be returned to you";
+            }
+            string output = "";
+            
             _db.SaveChanges();
-            return View(_coinsWrapper);
+            return "работает";
         }
         [HttpGet]
         public ActionResult Admin(string Id)

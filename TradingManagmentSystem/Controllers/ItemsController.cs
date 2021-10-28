@@ -50,8 +50,13 @@ namespace TradingManagmentSystem.Controllers
         public ActionResult Edit(ItemsWrapper items)
         {
             items.ItemsToDb();
-            string fileName = System.IO.Path.GetFileName(items.upload.FileName);
-            items.upload.SaveAs(Server.MapPath("~/Images/" + "Photo" + items.Id.ToString() + System.IO.Path.GetExtension(fileName)));
+            if (items.upload != null)
+            {
+                string fileName = System.IO.Path.GetFileName(items.upload.FileName);
+                items.upload.SaveAs(Server.MapPath("~/Images/" + "Photo" + items.Id.ToString() +
+                                                   System.IO.Path.GetExtension(fileName)));
+            }
+
             return RedirectToAction("Admin", "Home", new { Id = "9554390C-3C51-4DF6-AF21-618798258F98" });
         }
 
