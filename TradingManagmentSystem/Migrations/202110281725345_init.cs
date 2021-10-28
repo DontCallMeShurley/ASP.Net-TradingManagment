@@ -3,7 +3,7 @@ namespace TradingManagmentSystem.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -23,8 +23,9 @@ namespace TradingManagmentSystem.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Purchase = c.Single(nullable: false),
+                        Purchase = c.Int(nullable: false),
                         Name = c.String(),
+                        Count = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

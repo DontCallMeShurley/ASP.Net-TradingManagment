@@ -119,17 +119,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110280602348_InitialCreate.cs" />
-    <Compile Include="Migrations\202110280602348_InitialCreate.Designer.cs">
-      <DependentUpon>202110280602348_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110281103278_new1.cs" />
-    <Compile Include="Migrations\202110281103278_new1.Designer.cs">
-      <DependentUpon>202110281103278_new1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110281158395_new12.cs" />
-    <Compile Include="Migrations\202110281158395_new12.Designer.cs">
-      <DependentUpon>202110281158395_new12.cs</DependentUpon>
+    <Compile Include="Migrations\202110281725345_init.cs" />
+    <Compile Include="Migrations\202110281725345_init.Designer.cs">
+      <DependentUpon>202110281725345_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Coins.cs" />
@@ -160,8 +152,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\Photo1.png" />
+    <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -190,24 +184,14 @@
     <Content Include="Views\Items\Create.cshtml" />
     <Content Include="Views\Items\Index.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110280602348_InitialCreate.resx">
-      <DependentUpon>202110280602348_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110281103278_new1.resx">
-      <DependentUpon>202110281103278_new1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110281158395_new12.resx">
-      <DependentUpon>202110281158395_new12.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110281725345_init.resx">
+      <DependentUpon>202110281725345_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

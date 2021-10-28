@@ -61,6 +61,10 @@ namespace TradingManagmentSystem.Models
             this.Money = Count1 + Count2 * 2 + Count5 * 5 +
                          Count10 * 10;
         }
+        public int totalSum()
+        {
+            return _db.Coins.FirstOrDefault(x => x.Denominations == 1).Count + _db.Coins.FirstOrDefault(x => x.Denominations == 2).Count *2 + _db.Coins.FirstOrDefault(x => x.Denominations == 5).Count * 5 + _db.Coins.FirstOrDefault(x => x.Denominations == 10).Count * 10;
+        }
         public bool Avaliable1 { get; set; }
         public bool Avaliable2 { get; set; }
         public bool Avaliable5 { get; set; }
