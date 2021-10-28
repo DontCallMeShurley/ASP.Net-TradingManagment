@@ -7,9 +7,21 @@ namespace TradingManagmentSystem.Models
 {
     public class Items
     {
-        public int Id { get; set; }
-        public float Purchase { get; set; }
-        public String Name { get; set; }
+        public Items(int id, int purchase, string name, int count)
+        {
+            this.Id = id;
+            this.Purchase = purchase;
+            this.Name = name;
+            this.Count = count;
+        }
 
+        public Items()
+        {
+        }
+
+        public int Id { get; set; }
+        public int Purchase { get; set; }
+        public String Name { get; set; }
+        public int Count { get; set; }
     }
 }

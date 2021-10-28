@@ -20,6 +20,7 @@ namespace TradingManagmentSystem.Models
             this.Count2 = _db.Coins.FirstOrDefault(x => x.Denominations == 2).Count;
             this.Count5 = _db.Coins.FirstOrDefault(x => x.Denominations == 5).Count;
             this.Count10 = _db.Coins.FirstOrDefault(x => x.Denominations == 10).Count;
+            this.ItemsEnumerable = _db.Items.ToList();
         }
         public void CoinsToDb()
         {
@@ -59,5 +60,6 @@ namespace TradingManagmentSystem.Models
 
         [DisplayName("Count denomination 10")]
         public int Count10 { get; set; }
+        public  IEnumerable<Items> ItemsEnumerable { get; set; }
     }
 }

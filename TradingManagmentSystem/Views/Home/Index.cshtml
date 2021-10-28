@@ -9,62 +9,92 @@
         <div class="row col-md-4">
             <h4>
                 Your coins <input type="text" size="9" id="Coins" readonly value="0">
-                <input type ="button" id="buttonReturn" value = "return coins" />
+                <input type="button" id="buttonReturn" value="return coins" />
             </h4>
         </div>
     </div>
 
-    <input type="number" hidden="hidden" id="Count1" name="Count1"  value="0" />
-    <input type="number" hidden="hidden" id="Count2" name="Count2" value="0"  />
-    <input type="number" hidden="hidden" id="Count5" name="Count5" value="0"  />
-    <input type="number" hidden="hidden" id="Count10" name="Count10" value="0"  />
+    <input type="number" hidden="hidden" id="Count1" name="Count1" value="0" />
+    <input type="number" hidden="hidden" id="Count2" name="Count2" value="0" />
+    <input type="number" hidden="hidden" id="Count5" name="Count5" value="0" />
+    <input type="number" hidden="hidden" id="Count10" name="Count10" value="0" />
 
     <div class="container">
 
         <div class="row col-md-4">
             <h4>
                 Add Coins
-                <input type ="button" id="button1"  value ="1" @(Model.Avaliable1 == true ? "" : "disabled = \"disabled\"") />
-                <input type ="button" id="button2"  value ="2"  @(Model.Avaliable2 == true ? "" : "disabled = \"disabled\"") />
-                <input type ="button" id="button5"  value ="5" @(Model.Avaliable5 == true ? "" : "disabled = \"disabled\"") />
-                <input type ="button" id="button10" value ="10" @(Model.Avaliable10 == true ? "" : "disabled = \"disabled\"") />
+                <input type="button" id="button1" value="1" @(Model.Avaliable1 == true ? "" : "disabled = \"disabled\"") />
+                <input type="button" id="button2" value="2" @(Model.Avaliable2 == true ? "" : "disabled = \"disabled\"") />
+                <input type="button" id="button5" value="5" @(Model.Avaliable5 == true ? "" : "disabled = \"disabled\"") />
+                <input type="button" id="button10" value="10" @(Model.Avaliable10 == true ? "" : "disabled = \"disabled\"") />
             </h4>
         </div>
 
     </div>
-    <p><input type="submit" value="Отправить" /></p>
 </form>
-
-    @section scripts {
-        <script>
-            $("#button1").click(function () {
-                $("#Coins").val(parseInt($("#Coins").val()) + 1);
-                $("#Count1").val(parseInt($("#Count1").val()) + 1);
-                }
-            );
-            $("#button2").click(function () {
-                $("#Coins").val(parseInt($("#Coins").val()) + 2);
-                $("#Count2").val(parseInt($("#Count2").val()) + 1);
-            }
-            );
-            $("#button5").click(function () {
-                $("#Coins").val(parseInt($("#Coins").val()) + 5);
-                $("#Count5").val(parseInt($("#Count5").val()) + 1);
-            }
-            );
-            $("#button10").click(function () {
-                $("#Coins").val(parseInt($("#Coins").val()) + 10);
-                $("#Count10").val(parseInt($("#Count10").val()) + 1);
-            }
-            );
-            $("#buttonReturn").click(function () {
-                $("#Coins").val(0);
-
-                $("#Count1").val(0);
-                $("#Count1").val(0);
-                $("#Count1").val(0);
-                $("#Count1").val(0);
-                }
-            );
-        </script>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Purchase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Count)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.ItemsEnumerable.Where(a => a.Count > 0))
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Purchase)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Count)
+    </td>
+    <td>
+         <img src=@("/Images/Photo" + item.Id + ".png") alt="Photo" width="150" height="150"/>
+    </td>
+</tr>
     }
+
+</table>
+@section scripts {
+    <script>
+        $("#button1").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 1);
+            $("#Count1").val(parseInt($("#Count1").val()) + 1);
+        }
+        );
+        $("#button2").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 2);
+            $("#Count2").val(parseInt($("#Count2").val()) + 1);
+        }
+        );
+        $("#button5").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 5);
+            $("#Count5").val(parseInt($("#Count5").val()) + 1);
+        }
+        );
+        $("#button10").click(function () {
+            $("#Coins").val(parseInt($("#Coins").val()) + 10);
+            $("#Count10").val(parseInt($("#Count10").val()) + 1);
+        }
+        );
+        $("#buttonReturn").click(function () {
+            $("#Coins").val(0);
+
+            $("#Count1").val(0);
+            $("#Count1").val(0);
+            $("#Count1").val(0);
+            $("#Count1").val(0);
+        }
+        );
+    </script>
+}

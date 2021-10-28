@@ -12,10 +12,13 @@ namespace TradingManagmentSystem.Controllers
     public class HomeController : Controller
     {
         public ItemsContext _db = new ItemsContext();
-        public CoinsWrapper _coinsWrapper = new CoinsWrapper();
+        public CoinsWrapper _coinsWrapper;
+
         [HttpGet]
         public ActionResult Index()
         {
+            CoinsUpdate();
+            _coinsWrapper = new CoinsWrapper();
             _db.SaveChanges();
             return View(_coinsWrapper);
         }
@@ -44,10 +47,12 @@ namespace TradingManagmentSystem.Controllers
         {
             _coinsWrapper = coinsWrapper;
             coinsWrapper.CoinsToDb();
-            return View();
+            return View(coinsWrapper);
         }
         private void CoinsUpdate()
         {
+            if (_coinsWrapper == null)
+                _coinsWrapper = new CoinsWrapper();
             if (_db.Coins.Count() < 4)
             {
                 foreach (var entity in _db.Coins)

@@ -4,31 +4,82 @@
 @{
     ViewBag.Title = "Admin Page";
 }
-<form method="post" action="">
-    <div class="container">
+<div class="form-group">
+    <form method="post" action="">
 
-        <div class="row col-md-4">
-            <h4>
-                @Html.LabelFor(modelItem => Model.Count1): @Html.EditorFor(modelItem => Model.Count1)
-                @Html.LabelFor(modelItem => Model.Count2): @Html.EditorFor(modelItem => Model.Count2)
-                @Html.LabelFor(modelItem => Model.Count5): @Html.EditorFor(modelItem => Model.Count5)
-                @Html.LabelFor(modelItem => Model.Count10): @Html.EditorFor(modelItem => Model.Count10)
-            </h4>
-        </div>
-    </div>
+        <div class="container">
 
-    <div class="container">
-        <div class="row col-md-4">
-            <h4>
-                Avaliable Coins:
-                1 @Html.EditorFor(modelItem => Model.Avaliable1)
-                2 @Html.EditorFor(modelItem => Model.Avaliable2)
-                5 @Html.EditorFor(modelItem => Model.Avaliable5)
-                10 @Html.EditorFor(modelItem => Model.Avaliable10)
-            </h4>
+            <div class="row col-lg-4">
+
+                @Html.LabelFor(modelItem => Model.Count1):
+                @Html.EditorFor(modelItem => Model.Count1)
+
+                @Html.LabelFor(modelItem => Model.Count2):
+                @Html.EditorFor(modelItem => Model.Count2)
+
+                @Html.LabelFor(modelItem => Model.Count5):
+                @Html.EditorFor(modelItem => Model.Count5)
+
+                @Html.LabelFor(modelItem => Model.Count10):
+                @Html.EditorFor(modelItem => Model.Count10)
+
+            </div>
         </div>
-    </div>
-    <h4>
-        <input type="submit" value="Сохранить" />
-    </h4>
-</form>
+
+        <div class="form-group">
+            <div class="row col-md-10">
+                <h4>
+                    Avaliable Coins:
+                    1 @Html.EditorFor(modelItem => Model.Avaliable1)
+                    2 @Html.EditorFor(modelItem => Model.Avaliable2)
+                    5 @Html.EditorFor(modelItem => Model.Avaliable5)
+                    10 @Html.EditorFor(modelItem => Model.Avaliable10)
+                </h4>
+            </div>
+        </div>
+        <h4>
+            <input type="submit" value="Save" />
+        </h4>
+    </form>
+</div>
+<td><p><a href="/Items/Create">Create drink</a></p></td>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Purchase)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemsEnumerable.FirstOrDefault().Count)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.ItemsEnumerable) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Purchase)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Count)
+        </td>
+        <td> <img src=@("/Images/Photo"+item.Id+".png") alt="Photo" width="150" height="150" /></td>
+
+        <td>
+        <td>
+            <p><a href=@("/Items/Delete/" + item.Id)>Delete</a></p>
+        </td>
+        <td>
+            <p><a href=@("/Items/Edit/" + item.Id)>Edit</a></p>
+        </td>
+        </td>
+    </tr>
+    }
+
+</table>
+
+
