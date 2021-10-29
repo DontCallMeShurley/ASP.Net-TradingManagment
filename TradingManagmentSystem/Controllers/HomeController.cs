@@ -31,7 +31,7 @@ namespace TradingManagmentSystem.Controllers
             Items buyItems = _db.Items.FirstOrDefault(x => x.Id == coinsWrapper.itemsId);
             if (buyItems.Purchase > coinsWrapper.Money)
             {
-                _coinsWrapper.RemoveCoin();
+                _coinsWrapper.RemoveCoin(_coinsWrapper.Count1, _coinsWrapper.Count2, _coinsWrapper.Count5, _coinsWrapper.Count10);
                 _coinsWrapper = new CoinsWrapper();
                 ViewBag.Info =  "You don't have enough money. Coins will be returned to you";
                 return View(dbCoins);
@@ -52,16 +52,12 @@ namespace TradingManagmentSystem.Controllers
             }
             if (change > 0)
             {
-                _coinsWrapper.RemoveCoin();
+                _coinsWrapper.RemoveCoin(_coinsWrapper.Count1,_coinsWrapper.Count2, _coinsWrapper.Count5, _coinsWrapper.Count10);
                 output += " There are not enough coins to give you change. Coins will be returned to you";
                 ViewBag.Info = output;
                 return View(dbCoins);
             }
-            dbCoins.Count1 = coinsToChange[0];
-            dbCoins.Count2 = coinsToChange[1];
-            dbCoins.Count5 = coinsToChange[2];
-            dbCoins.Count10 = coinsToChange[3];
-            dbCoins.RemoveCoin();
+            dbCoins.RemoveCoin(coinsToChange[0], coinsToChange[1],coinsToChange[2],coinsToChange[3]);
             buyItems.Count -= 1;
             dbCoins.ItemsEnumerable = _db.Items;
             if (coinsWrapper.Money - buyItems.Purchase > 0)

@@ -46,12 +46,12 @@ namespace TradingManagmentSystem.Models
             _db.SaveChanges();
         }
 
-        public void RemoveCoin()
+        public void RemoveCoin(int Count1, int Count2, int Count3, int Count4)
         {
-            _db.Coins.FirstOrDefault(x => x.Denominations == 1).Count -= this.Count1;
-            _db.Coins.FirstOrDefault(x => x.Denominations == 2).Count -= this.Count2;
-            _db.Coins.FirstOrDefault(x => x.Denominations == 5).Count -= this.Count5;
-            _db.Coins.FirstOrDefault(x => x.Denominations == 10).Count -= this.Count10;
+            _db.Coins.FirstOrDefault(x => x.Denominations == 1).Count -= Count1;
+            _db.Coins.FirstOrDefault(x => x.Denominations == 2).Count -= Count2;
+            _db.Coins.FirstOrDefault(x => x.Denominations == 5).Count -= Count3;
+            _db.Coins.FirstOrDefault(x => x.Denominations == 10).Count -= Count4;
             sumCoin();
             _db.SaveChanges();
         }
